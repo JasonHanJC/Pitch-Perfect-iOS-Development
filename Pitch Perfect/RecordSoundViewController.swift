@@ -88,6 +88,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "stopRecording" {
+            // segue.destinationViewController makes that when stopRecording is called the view will changed to the next wanted view
             let playSoundsVC:PlaySoundViewController = segue.destinationViewController as! PlaySoundViewController
             let data = sender as! RecordedAudio
             playSoundsVC.receivedAudio = data
