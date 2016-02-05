@@ -15,24 +15,24 @@ class PlaySoundViewController: UIViewController {
     var receivedAudio: RecordedAudio!
     var audioEngine: AVAudioEngine!
     var audioFile: AVAudioFile!
+    var audioPlayerNode: AVAudioPlayerNode!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Load sound
         do {
-            //let resourcePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!
-            //let url = NSURL(fileURLWithPath: resourcePath)
+            
             let url = receivedAudio.filePathUrl
             try audioPlayer = AVAudioPlayer(contentsOfURL: url)
             audioPlayer.enableRate = true
-            
             
         } catch let err as NSError {
             print(err.debugDescription)
         }
         
         audioEngine = AVAudioEngine()
+        audioPlayerNode = AVAudioPlayerNode()
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
         audioPlayer.prepareToPlay()
         
@@ -61,12 +61,9 @@ class PlaySoundViewController: UIViewController {
     }
     
     func playDifPitchSounds(pitch: Float) {
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        resetAudioUnits()
 
-        
-        let audioPlayerNode = AVAudioPlayerNode()
+        audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         
         let changePitchEffect = AVAudioUnitTimePitch()
@@ -80,21 +77,33 @@ class PlaySoundViewController: UIViewController {
         try! audioEngine.start()
         
         audioPlayerNode.play()
-        
     }
     
     func playDifRateSounds(rate: Float) {
-        if audioPlayer.playing {
-            audioPlayer.stop()
-            audioPlayer.currentTime = 0
-        }
+        resetAudioUnits()
+        
         audioPlayer.rate = rate
         audioPlayer.play()
     }
     
+    func resetAudioUnits() {
+        if audioEngine.running {
+            audioEngine.stop()
+            audioEngine.reset()
+        }
+        
+        if audioPlayerNode.playing {
+            audioPlayerNode.stop()
+        }
+        
+        if audioPlayer.playing {
+            audioPlayer.stop()
+            audioPlayer.currentTime = 0
+        }
+    }
+    
     @IBAction func stopPlaySounds(sender: UIButton) {
-        audioPlayer.stop()
-        audioPlayer.currentTime = 0
+        resetAudioUnits()
     }
 
 }
