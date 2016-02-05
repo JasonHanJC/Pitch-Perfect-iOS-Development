@@ -113,6 +113,8 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
         
+        timer.invalidate()
+        
     }
     
     func recordLblBlink() {
