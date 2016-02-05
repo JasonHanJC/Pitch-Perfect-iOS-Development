@@ -12,14 +12,16 @@ import AVFoundation
 class PlaySoundViewController: UIViewController {
 
     var playSlowSound: AVAudioPlayer!
+    var receivedAudio: RecordedAudio!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Load sound
         do {
-            let resourcePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!
-            let url = NSURL(fileURLWithPath: resourcePath)
+            //let resourcePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!
+            //let url = NSURL(fileURLWithPath: resourcePath)
+            let url = receivedAudio.filePathUrl
             try playSlowSound = AVAudioPlayer(contentsOfURL: url)
             playSlowSound.enableRate = true
             
