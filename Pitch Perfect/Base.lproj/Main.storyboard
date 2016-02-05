@@ -106,17 +106,105 @@
             </objects>
             <point key="canvasLocation" x="1488" y="498"/>
         </scene>
-        <!--View Controller-->
+        <!--Play Sound View Controller-->
         <scene sceneID="fMw-DY-x0o">
             <objects>
-                <viewController id="atq-Dp-SnT" sceneMemberID="viewController">
+                <viewController id="atq-Dp-SnT" customClass="PlaySoundViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Lz-rI-Quu"/>
                         <viewControllerLayoutGuide type="bottom" id="MmC-Al-Edd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2f1-NI-1Cv">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="ekT-Tn-Ebv">
+                                <rect key="frame" x="51" y="98" width="278" height="140"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPp-4x-soH">
+                                        <rect key="frame" x="20" y="20" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Hdb-Bn-nbp"/>
+                                            <constraint firstAttribute="width" constant="100" id="etz-QY-bp3"/>
+                                        </constraints>
+                                        <state key="normal" image="SlowSound"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Hdb-Bn-nbp"/>
+                                                <exclude reference="etz-QY-bp3"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Hdb-Bn-nbp"/>
+                                                <include reference="etz-QY-bp3"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="playSlowSounds:" destination="atq-Dp-SnT" eventType="touchUpInside" id="df0-9u-tYr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FhC-mA-3fO">
+                                        <rect key="frame" x="158" y="20" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="WGz-CZ-9of"/>
+                                            <constraint firstAttribute="width" constant="100" id="myj-6b-jqK"/>
+                                        </constraints>
+                                        <state key="normal" image="FastSound"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="WGz-CZ-9of"/>
+                                                <exclude reference="myj-6b-jqK"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="WGz-CZ-9of"/>
+                                                <include reference="myj-6b-jqK"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="playFastSounds:" destination="atq-Dp-SnT" eventType="touchUpInside" id="q2b-2o-o0A"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Lt-Y2-20i">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="StopImg"/>
+                                <connections>
+                                    <action selector="stopPlaySounds:" destination="atq-Dp-SnT" eventType="touchUpInside" id="dZA-in-gpm"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ekT-Tn-Ebv" firstAttribute="top" secondItem="1Lz-rI-Quu" secondAttribute="bottom" constant="50" id="G9H-pp-d9L"/>
+                            <constraint firstItem="3Lt-Y2-20i" firstAttribute="centerX" secondItem="2f1-NI-1Cv" secondAttribute="centerX" id="KDC-7U-yDh"/>
+                            <constraint firstItem="ekT-Tn-Ebv" firstAttribute="centerX" secondItem="2f1-NI-1Cv" secondAttribute="centerX" id="mUH-gl-LDf"/>
+                            <constraint firstItem="MmC-Al-Edd" firstAttribute="top" secondItem="3Lt-Y2-20i" secondAttribute="bottom" constant="50" id="zkW-ot-QS4"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="3Lt-Y2-20i"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="G9H-pp-d9L"/>
+                                <exclude reference="mUH-gl-LDf"/>
+                                <exclude reference="KDC-7U-yDh"/>
+                                <exclude reference="zkW-ot-QS4"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="3Lt-Y2-20i"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="G9H-pp-d9L"/>
+                                <include reference="mUH-gl-LDf"/>
+                                <include reference="KDC-7U-yDh"/>
+                                <include reference="zkW-ot-QS4"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4n0-oL-aGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,7 +231,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FastSound" width="100" height="100"/>
         <image name="Microphone" width="100" height="100"/>
+        <image name="SlowSound" width="100" height="100"/>
         <image name="StopImg" width="50" height="50"/>
     </resources>
 </document>
