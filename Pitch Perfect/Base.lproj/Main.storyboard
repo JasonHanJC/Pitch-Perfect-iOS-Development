@@ -17,13 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxZ-KB-Ywa">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" image="Microphone"/>
-                                <connections>
-                                    <action selector="recordSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="obh-0g-8OE"/>
-                                </connections>
-                            </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording in Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jL-Pi-OGz">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -53,6 +46,13 @@
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZaM-Kq-vrF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxZ-KB-Ywa">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="Microphone"/>
+                                <connections>
+                                    <action selector="recordSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="obh-0g-8OE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.34187488370942448" green="0.71843495954865577" blue="0.83763415404040398" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -65,9 +65,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="zxZ-KB-Ywa"/>
                                 <exclude reference="1jL-Pi-OGz"/>
                                 <exclude reference="LOO-jI-cZC"/>
+                                <exclude reference="zxZ-KB-Ywa"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="zoa-53-vFZ"/>
@@ -80,9 +80,9 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="zxZ-KB-Ywa"/>
                                 <include reference="1jL-Pi-OGz"/>
                                 <include reference="LOO-jI-cZC"/>
+                                <include reference="zxZ-KB-Ywa"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="zoa-53-vFZ"/>
@@ -228,7 +228,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.34187488370000002" green="0.71843495950000003" blue="0.83763415399999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ekT-Tn-Ebv" firstAttribute="top" secondItem="1Lz-rI-Quu" secondAttribute="bottom" constant="50" id="G9H-pp-d9L"/>
                             <constraint firstItem="3Lt-Y2-20i" firstAttribute="centerX" secondItem="2f1-NI-1Cv" secondAttribute="centerX" id="KDC-7U-yDh"/>
