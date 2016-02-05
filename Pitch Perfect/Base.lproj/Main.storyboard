@@ -17,6 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxZ-KB-Ywa">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="Microphone"/>
+                                <connections>
+                                    <action selector="recordSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="obh-0g-8OE"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jL-Pi-OGz">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -46,13 +53,6 @@
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZaM-Kq-vrF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxZ-KB-Ywa">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" image="Microphone"/>
-                                <connections>
-                                    <action selector="recordSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="obh-0g-8OE"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.34187488370942448" green="0.71843495954865577" blue="0.83763415404040398" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -65,9 +65,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="zxZ-KB-Ywa"/>
                                 <exclude reference="1jL-Pi-OGz"/>
                                 <exclude reference="LOO-jI-cZC"/>
-                                <exclude reference="zxZ-KB-Ywa"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="zoa-53-vFZ"/>
@@ -80,9 +80,9 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
+                                <include reference="zxZ-KB-Ywa"/>
                                 <include reference="1jL-Pi-OGz"/>
                                 <include reference="LOO-jI-cZC"/>
-                                <include reference="zxZ-KB-Ywa"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="zoa-53-vFZ"/>
@@ -121,7 +121,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="ekT-Tn-Ebv">
                                 <rect key="frame" x="51" y="98" width="260" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPp-4x-soH">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPp-4x-soH">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Hdb-Bn-nbp"/>
@@ -144,7 +144,7 @@
                                             <action selector="playSlowSounds:" destination="atq-Dp-SnT" eventType="touchUpInside" id="df0-9u-tYr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FhC-mA-3fO">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FhC-mA-3fO">
                                         <rect key="frame" x="160" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="WGz-CZ-9of"/>
@@ -176,11 +176,11 @@
                                     <action selector="stopPlaySounds:" destination="atq-Dp-SnT" eventType="touchUpInside" id="dZA-in-gpm"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-5u-qBW">
-                                <rect key="frame" x="50" y="230" width="300" height="140"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-5u-qBW">
+                                <rect key="frame" x="50" y="230" width="260" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR9-l2-kzc">
-                                        <rect key="frame" x="20" y="20" width="100" height="100"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR9-l2-kzc">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="WLU-cK-Uj1"/>
                                             <constraint firstAttribute="width" constant="100" id="bxo-hp-eg1"/>
@@ -202,8 +202,8 @@
                                             <action selector="playChipmunkSound:" destination="atq-Dp-SnT" eventType="touchUpInside" id="tPM-7z-W3Y"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGz-H1-wHP">
-                                        <rect key="frame" x="180" y="20" width="100" height="100"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGz-H1-wHP">
+                                        <rect key="frame" x="160" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="dqN-oj-46W"/>
                                             <constraint firstAttribute="width" constant="100" id="fiH-5X-tPz"/>
@@ -242,11 +242,11 @@
                                 <exclude reference="3Lt-Y2-20i"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="KDC-7U-yDh"/>
                                 <exclude reference="G9H-pp-d9L"/>
                                 <exclude reference="mUH-gl-LDf"/>
                                 <exclude reference="WgO-6f-73M"/>
                                 <exclude reference="eR1-Df-xUY"/>
-                                <exclude reference="KDC-7U-yDh"/>
                                 <exclude reference="zkW-ot-QS4"/>
                             </mask>
                         </variation>
@@ -255,11 +255,11 @@
                                 <include reference="3Lt-Y2-20i"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="KDC-7U-yDh"/>
                                 <include reference="G9H-pp-d9L"/>
                                 <include reference="mUH-gl-LDf"/>
                                 <include reference="WgO-6f-73M"/>
                                 <include reference="eR1-Df-xUY"/>
-                                <include reference="KDC-7U-yDh"/>
                                 <include reference="zkW-ot-QS4"/>
                             </mask>
                         </variation>

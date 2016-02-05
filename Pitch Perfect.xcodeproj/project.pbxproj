@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		96021F5D1C6420DB0061EA62 /* PlaySoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96021F5C1C6420DB0061EA62 /* PlaySoundViewController.swift */; };
-		96021F5F1C64254B0061EA62 /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96021F5E1C64254B0061EA62 /* movie_quote.mp3 */; };
 		96021F611C647F830061EA62 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96021F601C647F830061EA62 /* RecordedAudio.swift */; };
 		96DF23D31C61E34700E7FD74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DF23D21C61E34700E7FD74 /* AppDelegate.swift */; };
 		96DF23D51C61E34700E7FD74 /* RecordSoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DF23D41C61E34700E7FD74 /* RecordSoundViewController.swift */; };
@@ -19,7 +18,6 @@
 
 /* Begin PBXFileReference section */
 		96021F5C1C6420DB0061EA62 /* PlaySoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundViewController.swift; sourceTree = "<group>"; };
-		96021F5E1C64254B0061EA62 /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 		96021F601C647F830061EA62 /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 		96DF23CF1C61E34700E7FD74 /* Pitch Perfect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Perfect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DF23D21C61E34700E7FD74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 		96DF23D11C61E34700E7FD74 /* Pitch Perfect */ = {
 			isa = PBXGroup;
 			children = (
-				96021F5E1C64254B0061EA62 /* movie_quote.mp3 */,
 				96021F5C1C6420DB0061EA62 /* PlaySoundViewController.swift */,
 				96DF23D21C61E34700E7FD74 /* AppDelegate.swift */,
 				96DF23D41C61E34700E7FD74 /* RecordSoundViewController.swift */,
@@ -134,7 +131,6 @@
 			files = (
 				96DF23DD1C61E34700E7FD74 /* LaunchScreen.storyboard in Resources */,
 				96DF23DA1C61E34700E7FD74 /* Assets.xcassets in Resources */,
-				96021F5F1C64254B0061EA62 /* movie_quote.mp3 in Resources */,
 				96DF23D81C61E34700E7FD74 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

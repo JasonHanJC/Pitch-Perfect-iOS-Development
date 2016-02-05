@@ -18,10 +18,14 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     // var:
     var soundRecorder: AVAudioRecorder!
     var recordedAudio: RecordedAudio!
+    var timer: NSTimer!
+    var blinkStatus: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        blinkStatus = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +68,15 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         soundRecorder.prepareToRecord()
         soundRecorder.record()
         
+        startTimer()
+    }
+    
+    func startTimer() {
+        if timer != nil {
+            timer.invalidate()
+        }
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "recordLblBlink", userInfo: nil, repeats: true)
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
@@ -100,6 +113,16 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
         
+    }
+    
+    func recordLblBlink() {
+        if blinkStatus == false {
+            recordLabel.alpha = 0.2
+            blinkStatus = true
+        } else {
+            recordLabel.alpha = 1
+            blinkStatus = false
+        }
     }
 
 }
