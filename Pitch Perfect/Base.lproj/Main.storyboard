@@ -30,11 +30,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hXM-Jn-Hyq">
-                                <rect key="frame" x="88" y="480" width="157" height="90"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hXM-Jn-Hyq">
+                                <rect key="frame" x="88" y="480" width="170" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfH-wj-CYa">
-                                        <rect key="frame" x="20" y="20" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfH-wj-CYa">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gon-2R-7KW"/>
                                             <constraint firstAttribute="width" constant="50" id="ll1-yb-VU4"/>
@@ -56,8 +56,8 @@
                                             <action selector="pauseAndResumeRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eeg-7l-FmI"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOO-jI-cZC">
-                                        <rect key="frame" x="87" y="20" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOO-jI-cZC">
+                                        <rect key="frame" x="120" y="0.0" width="50" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="47s-F4-3Cr"/>
                                             <constraint firstAttribute="width" constant="50" id="lAT-kh-oBA"/>
