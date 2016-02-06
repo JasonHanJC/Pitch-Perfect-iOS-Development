@@ -14,23 +14,21 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var stopRecordBtn: UIButton!
     @IBOutlet weak var recordBtn: UIButton!
+    @IBOutlet weak var pauseAndResumeRecordBtn: UIButton!
     
     // var:
     var soundRecorder: AVAudioRecorder!
     var recordedAudio: RecordedAudio!
     var timer: NSTimer!
     var blinkStatus: Bool!
+    var isPause: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         blinkStatus = false
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        isPause = false
     }
     
     // For showing and hiding things
@@ -38,6 +36,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         
         stopRecordBtn.hidden = true
         recordLabel.hidden = false
+        pauseAndResumeRecordBtn.hidden = true
         recordBtn.enabled = true
     }
 
@@ -46,6 +45,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         
         recordLabel.text = "Recording in progress"
         stopRecordBtn.hidden = false
+        pauseAndResumeRecordBtn.hidden = false
         recordBtn.enabled = false
         
         // prepare to record
@@ -84,13 +84,13 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         if flag {
             recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
             // Move to the next scene aka perform segue
-            self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
+            performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         } else {
             // Print out the err and enable the btn to record again
             print("Recording was not successful")
             recordBtn.enabled = true
             stopRecordBtn.hidden = true
-            
+            pauseAndResumeRecordBtn.hidden = true
         }
     }
     
@@ -107,6 +107,9 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         
         recordLabel.hidden = true
         recordLabel.text = "Tap to Record"
+        isPause = false
+        pauseAndResumeRecordBtn.setImage(UIImage(named: "pauseImg"), forState: .Normal)
+        
         
         // stop the record
         soundRecorder.stop()
@@ -117,14 +120,38 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         
     }
     
+    @IBAction func pauseAndResumeRecording(sender: UIButton) {
+        
+        if isPause == false {
+            recordLabel.text = "Recording is Paused"
+            soundRecorder.pause()
+            pauseAndResumeRecordBtn.setImage(UIImage(named: "resumeImg"), forState: .Normal)
+            isPause = true
+        } else {
+            recordLabel.text = "Recording in progress"
+            soundRecorder.record()
+            pauseAndResumeRecordBtn.setImage(UIImage(named: "pauseImg"), forState: .Normal)
+            isPause = false
+        }
+        
+        
+    }
+    
     func recordLblBlink() {
-        if blinkStatus == false {
-            recordLabel.alpha = 0.2
-            blinkStatus = true
+        
+        if isPause == false {
+            if blinkStatus == false {
+                recordLabel.alpha = 0.4
+                blinkStatus = true
+            } else {
+                recordLabel.alpha = 1
+                blinkStatus = false
+            }
         } else {
             recordLabel.alpha = 1
             blinkStatus = false
         }
+        
     }
 
 }

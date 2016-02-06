@@ -30,72 +30,99 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOO-jI-cZC">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="47s-F4-3Cr"/>
-                                    <constraint firstAttribute="width" constant="50" id="lAT-kh-oBA"/>
-                                </constraints>
-                                <state key="normal" image="StopImg"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="47s-F4-3Cr"/>
-                                        <exclude reference="lAT-kh-oBA"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="47s-F4-3Cr"/>
-                                        <include reference="lAT-kh-oBA"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZaM-Kq-vrF"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hXM-Jn-Hyq">
+                                <rect key="frame" x="88" y="480" width="157" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfH-wj-CYa">
+                                        <rect key="frame" x="20" y="20" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="gon-2R-7KW"/>
+                                            <constraint firstAttribute="width" constant="50" id="ll1-yb-VU4"/>
+                                        </constraints>
+                                        <state key="normal" image="pauseImg"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="gon-2R-7KW"/>
+                                                <exclude reference="ll1-yb-VU4"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="gon-2R-7KW"/>
+                                                <include reference="ll1-yb-VU4"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="pauseAndResumeRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eeg-7l-FmI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOO-jI-cZC">
+                                        <rect key="frame" x="87" y="20" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="47s-F4-3Cr"/>
+                                            <constraint firstAttribute="width" constant="50" id="lAT-kh-oBA"/>
+                                        </constraints>
+                                        <state key="normal" image="StopImg"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="47s-F4-3Cr"/>
+                                                <exclude reference="lAT-kh-oBA"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="47s-F4-3Cr"/>
+                                                <include reference="lAT-kh-oBA"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZaM-Kq-vrF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.34187488370942448" green="0.71843495954865577" blue="0.83763415404040398" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LOO-jI-cZC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="01F-TJ-tqd"/>
                             <constraint firstItem="zxZ-KB-Ywa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3QO-9h-pFt"/>
-                            <constraint firstItem="1jL-Pi-OGz" firstAttribute="top" secondItem="zxZ-KB-Ywa" secondAttribute="bottom" constant="15" id="5tJ-Q9-cBO"/>
+                            <constraint firstItem="1jL-Pi-OGz" firstAttribute="top" secondItem="zxZ-KB-Ywa" secondAttribute="bottom" constant="30" id="5tJ-Q9-cBO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hXM-Jn-Hyq" secondAttribute="bottom" constant="50" id="Cye-Be-Jhm"/>
                             <constraint firstItem="1jL-Pi-OGz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MBW-La-hWU"/>
+                            <constraint firstItem="hXM-Jn-Hyq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="b3A-ga-YO1"/>
                             <constraint firstItem="zxZ-KB-Ywa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gq9-SI-UNB"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LOO-jI-cZC" secondAttribute="bottom" constant="50" id="zoa-53-vFZ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="zxZ-KB-Ywa"/>
                                 <exclude reference="1jL-Pi-OGz"/>
-                                <exclude reference="LOO-jI-cZC"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="zoa-53-vFZ"/>
-                                <exclude reference="01F-TJ-tqd"/>
                                 <exclude reference="3QO-9h-pFt"/>
                                 <exclude reference="gq9-SI-UNB"/>
                                 <exclude reference="5tJ-Q9-cBO"/>
                                 <exclude reference="MBW-La-hWU"/>
+                                <exclude reference="b3A-ga-YO1"/>
+                                <exclude reference="Cye-Be-Jhm"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="zxZ-KB-Ywa"/>
                                 <include reference="1jL-Pi-OGz"/>
-                                <include reference="LOO-jI-cZC"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="zoa-53-vFZ"/>
-                                <include reference="01F-TJ-tqd"/>
                                 <include reference="3QO-9h-pFt"/>
                                 <include reference="gq9-SI-UNB"/>
                                 <include reference="5tJ-Q9-cBO"/>
                                 <include reference="MBW-La-hWU"/>
+                                <include reference="b3A-ga-YO1"/>
+                                <include reference="Cye-Be-Jhm"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="eFj-a1-rfb"/>
                     <connections>
+                        <outlet property="pauseAndResumeRecordBtn" destination="wfH-wj-CYa" id="eJG-M4-f3L"/>
                         <outlet property="recordBtn" destination="zxZ-KB-Ywa" id="fY0-Lk-OuW"/>
                         <outlet property="recordLabel" destination="1jL-Pi-OGz" id="pHD-Rc-qN3"/>
                         <outlet property="stopRecordBtn" destination="LOO-jI-cZC" id="dsL-Gp-Y6m"/>
@@ -179,7 +206,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-5u-qBW">
                                 <rect key="frame" x="50" y="230" width="260" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR9-l2-kzc">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR9-l2-kzc">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="WLU-cK-Uj1"/>
@@ -202,7 +229,7 @@
                                             <action selector="playChipmunkSound:" destination="atq-Dp-SnT" eventType="touchUpInside" id="tPM-7z-W3Y"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGz-H1-wHP">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGz-H1-wHP">
                                         <rect key="frame" x="160" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="dqN-oj-46W"/>
@@ -295,5 +322,6 @@
         <image name="Microphone" width="100" height="100"/>
         <image name="SlowSound" width="100" height="100"/>
         <image name="StopImg" width="50" height="50"/>
+        <image name="pauseImg" width="100" height="100"/>
     </resources>
 </document>
