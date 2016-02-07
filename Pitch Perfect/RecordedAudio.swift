@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RecordedAudio: NSObject {
+class RecordedAudio {
     
     private var _filePathUrl: NSURL!
     private var _title: String!
