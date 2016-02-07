@@ -60,6 +60,26 @@ class PlaySoundViewController: UIViewController {
         playDifPitchSounds(1000)
     }
     
+    @IBAction func playReverbSound(sender: UIButton) {
+        resetAudioUnits()
+        
+        audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        
+        let reverb = AVAudioUnitReverb()
+        reverb.loadFactoryPreset(AVAudioUnitReverbPreset.MediumHall)
+        reverb.wetDryMix = 50
+        audioEngine.attachNode(reverb)
+        
+        audioEngine.connect(audioPlayerNode, to: reverb, format: nil)
+        audioEngine.connect(reverb, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        try! audioEngine.start()
+        
+        audioPlayerNode.play()
+    }
+    
     func playDifPitchSounds(pitch: Float) {
         resetAudioUnits()
 
