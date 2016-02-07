@@ -34,5 +34,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>ATSApplicationFontsPath</key>
+	<string>Open 24 Display St.ttf</string>
 </dict>
 </plist>
