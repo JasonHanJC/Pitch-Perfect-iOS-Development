@@ -16,8 +16,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordBtn: UIButton!
     @IBOutlet weak var pauseAndResumeRecordBtn: UIButton!
     @IBOutlet weak var recordBg: UIImageView!
-    @IBOutlet weak var timerLbl: UILabel!
-    
+    @IBOutlet weak var recordProgressBar: UIProgressView!
     
     // var:
     var soundRecorder: AVAudioRecorder!
@@ -26,19 +25,13 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     var timer_2: NSTimer!
     var blinkStatus: Bool!
     var isPause: Bool!
-    var startTime: NSTimeInterval!
-    var pauseTime: NSTimeInterval!
-    var timeGap_1: NSTimeInterval!
-    var timeGap_2: NSTimeInterval!
+    let MAX_TIME = 100.0
+    var startTime = 0.0
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        startTime = 0.0
-        pauseTime = 0.0
-        timeGap_1 = 0.0
-        timeGap_2 = 0.0
         blinkStatus = false
         isPause = true
     }
@@ -52,7 +45,6 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         recordBtn.enabled = true
         recordBtn.hidden = false
         recordBg.hidden = true
-        timerLbl.hidden = true
     }
 
     
@@ -64,7 +56,6 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         recordBtn.enabled = false
         recordBtn.hidden = true
         recordBg.hidden = false
-        timerLbl.hidden = false
         
         // prepare to record
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
@@ -88,7 +79,6 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         
         startTimer()
         
-        startTime = NSDate.timeIntervalSinceReferenceDate()
     }
     
     func startTimer() {
@@ -100,7 +90,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         }
         
         timer_1 = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "recordLblBlink", userInfo: nil, repeats: true)
-        timer_2 = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timerLblUpdate", userInfo: nil, repeats: true)
+        timer_2 = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateRecordingProgress", userInfo: nil, repeats: true)
     }
     
     func stopTimer() {
@@ -143,8 +133,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         soundRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
-        
-        pauseTime = 0.0
+
         stopTimer()
     }
     
@@ -155,15 +144,12 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
             soundRecorder.pause()
             pauseAndResumeRecordBtn.setImage(UIImage(named: "resumeImg"), forState: .Normal)
             isPause = false
-            timeGap_1 = NSDate.timeIntervalSinceReferenceDate()
             stopTimer()
         } else {
             recordLabel.text = "Recording in progress"
             soundRecorder.record()
             pauseAndResumeRecordBtn.setImage(UIImage(named: "pauseImg"), forState: .Normal)
             isPause = true
-            timeGap_2 = NSDate.timeIntervalSinceReferenceDate()
-            pauseTime = pauseTime + timeGap_2 - timeGap_1
             startTimer()
         }
         
@@ -184,21 +170,19 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    func timerLblUpdate() {
-        let currentTime = NSDate.timeIntervalSinceReferenceDate()
-        var elapsedTime: NSTimeInterval = currentTime - startTime - pauseTime
+    func updateRecordingProgress() {
+        startTime = startTime + 1.0
+        print(startTime)
+        print(recordProgressBar.progress)
+        recordProgressBar.setProgress(Float(startTime/100.0), animated: true)
         
-        let minutes = UInt8(elapsedTime / 60.0)
-        elapsedTime -= (NSTimeInterval(minutes) * 60)
-        
-        let seconds = UInt8(elapsedTime)
-        elapsedTime -= NSTimeInterval(seconds)
-        
-        let strMinutes = String(format: "%02d", minutes)
-        let strSeconds = String(format: "%02d", seconds)
-        
-        timerLbl.text = "\(strMinutes):\(strSeconds)"
+        if startTime == MAX_TIME {
+            soundRecorder.stop()
+            let audioSession = AVAudioSession.sharedInstance()
+            try! audioSession.setActive(false)
+        }
     }
+    
 
 }
 

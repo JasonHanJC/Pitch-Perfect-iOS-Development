@@ -4,11 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="Open 24 Display St.ttf">
-            <string>Open24DisplaySt</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--Record-->
         <scene sceneID="tne-QT-ifu">
@@ -111,64 +106,65 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LABEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCU-Ho-gDC">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="dZW-wo-JAZ">
+                                <rect key="frame" x="0.0" y="-2" width="150" height="2"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="0j0-lX-7fN"/>
-                                    <constraint firstAttribute="height" constant="60" id="d9e-RD-KHD"/>
+                                    <constraint firstAttribute="width" constant="216" id="7u9-jh-iNL"/>
+                                    <constraint firstAttribute="height" constant="2" id="8dX-2C-Iee"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Open24DisplaySt" family="Open 24 Display St" pointSize="66"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="0j0-lX-7fN"/>
-                                        <exclude reference="d9e-RD-KHD"/>
+                                        <exclude reference="7u9-jh-iNL"/>
+                                        <exclude reference="8dX-2C-Iee"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="0j0-lX-7fN"/>
-                                        <include reference="d9e-RD-KHD"/>
+                                        <include reference="7u9-jh-iNL"/>
+                                        <include reference="8dX-2C-Iee"/>
                                     </mask>
                                 </variation>
-                            </label>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.34187488370942448" green="0.71843495954865577" blue="0.83763415404040398" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xNF-VS-IG5" secondAttribute="trailing" id="1ep-2v-82i"/>
                             <constraint firstItem="xNF-VS-IG5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2nb-SZ-doP"/>
                             <constraint firstItem="zxZ-KB-Ywa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3QO-9h-pFt"/>
+                            <constraint firstItem="xNF-VS-IG5" firstAttribute="top" secondItem="dZW-wo-JAZ" secondAttribute="bottom" constant="30" id="5Zp-vt-Vky"/>
                             <constraint firstItem="1jL-Pi-OGz" firstAttribute="top" secondItem="zxZ-KB-Ywa" secondAttribute="bottom" constant="30" id="5tJ-Q9-cBO"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hXM-Jn-Hyq" secondAttribute="bottom" constant="50" id="Cye-Be-Jhm"/>
+                            <constraint firstItem="dZW-wo-JAZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DfS-Ai-pxK"/>
                             <constraint firstItem="xNF-VS-IG5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="E6E-Uu-aEb"/>
                             <constraint firstItem="1jL-Pi-OGz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MBW-La-hWU"/>
+                            <constraint firstItem="dZW-wo-JAZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O1X-gt-x8C"/>
                             <constraint firstItem="1jL-Pi-OGz" firstAttribute="top" secondItem="xNF-VS-IG5" secondAttribute="bottom" constant="16" id="Xrh-zv-IYo"/>
                             <constraint firstItem="hXM-Jn-Hyq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="b3A-ga-YO1"/>
-                            <constraint firstItem="HCU-Ho-gDC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-120" id="e3c-yB-9zQ"/>
+                            <constraint firstItem="xNF-VS-IG5" firstAttribute="top" secondItem="dZW-wo-JAZ" secondAttribute="bottom" constant="8" symbolic="YES" id="dzb-Qx-FkT"/>
                             <constraint firstItem="zxZ-KB-Ywa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gq9-SI-UNB"/>
                             <constraint firstItem="xNF-VS-IG5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="onm-Sj-Ev2"/>
-                            <constraint firstItem="HCU-Ho-gDC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wUf-86-jOQ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="zxZ-KB-Ywa"/>
                                 <exclude reference="1jL-Pi-OGz"/>
                                 <exclude reference="xNF-VS-IG5"/>
-                                <exclude reference="HCU-Ho-gDC"/>
+                                <exclude reference="dZW-wo-JAZ"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="DfS-Ai-pxK"/>
+                                <exclude reference="O1X-gt-x8C"/>
+                                <exclude reference="1ep-2v-82i"/>
+                                <exclude reference="2nb-SZ-doP"/>
+                                <exclude reference="5Zp-vt-Vky"/>
+                                <exclude reference="E6E-Uu-aEb"/>
+                                <exclude reference="dzb-Qx-FkT"/>
+                                <exclude reference="onm-Sj-Ev2"/>
                                 <exclude reference="3QO-9h-pFt"/>
                                 <exclude reference="gq9-SI-UNB"/>
                                 <exclude reference="5tJ-Q9-cBO"/>
                                 <exclude reference="MBW-La-hWU"/>
                                 <exclude reference="Xrh-zv-IYo"/>
-                                <exclude reference="e3c-yB-9zQ"/>
-                                <exclude reference="wUf-86-jOQ"/>
-                                <exclude reference="1ep-2v-82i"/>
-                                <exclude reference="2nb-SZ-doP"/>
-                                <exclude reference="E6E-Uu-aEb"/>
-                                <exclude reference="onm-Sj-Ev2"/>
                                 <exclude reference="b3A-ga-YO1"/>
                                 <exclude reference="Cye-Be-Jhm"/>
                             </mask>
@@ -178,20 +174,22 @@
                                 <include reference="zxZ-KB-Ywa"/>
                                 <include reference="1jL-Pi-OGz"/>
                                 <include reference="xNF-VS-IG5"/>
-                                <include reference="HCU-Ho-gDC"/>
+                                <include reference="dZW-wo-JAZ"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="DfS-Ai-pxK"/>
+                                <include reference="O1X-gt-x8C"/>
+                                <include reference="1ep-2v-82i"/>
+                                <include reference="2nb-SZ-doP"/>
+                                <include reference="5Zp-vt-Vky"/>
+                                <include reference="E6E-Uu-aEb"/>
+                                <exclude reference="dzb-Qx-FkT"/>
+                                <include reference="onm-Sj-Ev2"/>
                                 <include reference="3QO-9h-pFt"/>
                                 <include reference="gq9-SI-UNB"/>
                                 <include reference="5tJ-Q9-cBO"/>
                                 <include reference="MBW-La-hWU"/>
                                 <exclude reference="Xrh-zv-IYo"/>
-                                <include reference="e3c-yB-9zQ"/>
-                                <include reference="wUf-86-jOQ"/>
-                                <include reference="1ep-2v-82i"/>
-                                <include reference="2nb-SZ-doP"/>
-                                <include reference="E6E-Uu-aEb"/>
-                                <include reference="onm-Sj-Ev2"/>
                                 <include reference="b3A-ga-YO1"/>
                                 <include reference="Cye-Be-Jhm"/>
                             </mask>
@@ -203,8 +201,8 @@
                         <outlet property="recordBg" destination="xNF-VS-IG5" id="8uQ-LP-FiT"/>
                         <outlet property="recordBtn" destination="zxZ-KB-Ywa" id="fY0-Lk-OuW"/>
                         <outlet property="recordLabel" destination="1jL-Pi-OGz" id="pHD-Rc-qN3"/>
+                        <outlet property="recordProgressBar" destination="dZW-wo-JAZ" id="wDw-5s-xKG"/>
                         <outlet property="stopRecordBtn" destination="LOO-jI-cZC" id="dsL-Gp-Y6m"/>
-                        <outlet property="timerLbl" destination="HCU-Ho-gDC" id="dXW-vr-fIB"/>
                         <segue destination="atq-Dp-SnT" kind="show" identifier="stopRecording" id="BeO-8A-QcI"/>
                     </connections>
                 </viewController>
