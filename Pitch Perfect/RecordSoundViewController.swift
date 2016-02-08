@@ -40,7 +40,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         timeGap_1 = 0.0
         timeGap_2 = 0.0
         blinkStatus = false
-        isPause = false
+        isPause = true
     }
     
     // For showing and hiding things
@@ -109,7 +109,6 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
-        
         if flag {
             recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
             // Move to the next scene aka perform segue
@@ -136,7 +135,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         
         recordLabel.hidden = true
         recordLabel.text = "Tap to Record"
-        isPause = false
+        isPause = true
         pauseAndResumeRecordBtn.setImage(UIImage(named: "pauseImg"), forState: .Normal)
         
         
@@ -144,25 +143,25 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         soundRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
+        
         pauseTime = 0.0
         stopTimer()
-        
     }
     
     @IBAction func pauseAndResumeRecording(sender: UIButton) {
         
-        if isPause == false {
+        if isPause == true {
             recordLabel.text = "Recording is Paused"
             soundRecorder.pause()
             pauseAndResumeRecordBtn.setImage(UIImage(named: "resumeImg"), forState: .Normal)
-            isPause = true
+            isPause = false
             timeGap_1 = NSDate.timeIntervalSinceReferenceDate()
             stopTimer()
         } else {
             recordLabel.text = "Recording in progress"
             soundRecorder.record()
             pauseAndResumeRecordBtn.setImage(UIImage(named: "pauseImg"), forState: .Normal)
-            isPause = false
+            isPause = true
             timeGap_2 = NSDate.timeIntervalSinceReferenceDate()
             pauseTime = pauseTime + timeGap_2 - timeGap_1
             startTimer()
@@ -172,8 +171,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func recordLblBlink() {
-        
-        if isPause == false {
+        if isPause == true {
             if blinkStatus == false {
                 recordLabel.alpha = 0.4
                 blinkStatus = true
@@ -183,7 +181,6 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
             }
         } else {
             recordLabel.alpha = 1
-            blinkStatus = false
         }
     }
     

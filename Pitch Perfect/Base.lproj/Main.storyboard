@@ -32,7 +32,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jL-Pi-OGz">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hXM-Jn-Hyq">
@@ -158,17 +158,17 @@
                                 <exclude reference="HCU-Ho-gDC"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1ep-2v-82i"/>
-                                <exclude reference="2nb-SZ-doP"/>
-                                <exclude reference="E6E-Uu-aEb"/>
-                                <exclude reference="onm-Sj-Ev2"/>
-                                <exclude reference="e3c-yB-9zQ"/>
-                                <exclude reference="wUf-86-jOQ"/>
                                 <exclude reference="3QO-9h-pFt"/>
                                 <exclude reference="gq9-SI-UNB"/>
                                 <exclude reference="5tJ-Q9-cBO"/>
                                 <exclude reference="MBW-La-hWU"/>
                                 <exclude reference="Xrh-zv-IYo"/>
+                                <exclude reference="e3c-yB-9zQ"/>
+                                <exclude reference="wUf-86-jOQ"/>
+                                <exclude reference="1ep-2v-82i"/>
+                                <exclude reference="2nb-SZ-doP"/>
+                                <exclude reference="E6E-Uu-aEb"/>
+                                <exclude reference="onm-Sj-Ev2"/>
                                 <exclude reference="b3A-ga-YO1"/>
                                 <exclude reference="Cye-Be-Jhm"/>
                             </mask>
@@ -181,17 +181,17 @@
                                 <include reference="HCU-Ho-gDC"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1ep-2v-82i"/>
-                                <include reference="2nb-SZ-doP"/>
-                                <include reference="E6E-Uu-aEb"/>
-                                <include reference="onm-Sj-Ev2"/>
-                                <include reference="e3c-yB-9zQ"/>
-                                <include reference="wUf-86-jOQ"/>
                                 <include reference="3QO-9h-pFt"/>
                                 <include reference="gq9-SI-UNB"/>
                                 <include reference="5tJ-Q9-cBO"/>
                                 <include reference="MBW-La-hWU"/>
                                 <exclude reference="Xrh-zv-IYo"/>
+                                <include reference="e3c-yB-9zQ"/>
+                                <include reference="wUf-86-jOQ"/>
+                                <include reference="1ep-2v-82i"/>
+                                <include reference="2nb-SZ-doP"/>
+                                <include reference="E6E-Uu-aEb"/>
+                                <include reference="onm-Sj-Ev2"/>
                                 <include reference="b3A-ga-YO1"/>
                                 <include reference="Cye-Be-Jhm"/>
                             </mask>
@@ -212,7 +212,7 @@
             </objects>
             <point key="canvasLocation" x="1488" y="498"/>
         </scene>
-        <!--Play Sound View Controller-->
+        <!--Play-->
         <scene sceneID="fMw-DY-x0o">
             <objects>
                 <viewController id="atq-Dp-SnT" customClass="PlaySoundViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
@@ -413,10 +413,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Play" id="40J-yd-q2o" userLabel="Play"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4n0-oL-aGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2287.5" y="498"/>
+            <point key="canvasLocation" x="2248.5" y="498"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kBF-eB-Ko6">
