@@ -16,7 +16,9 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordBtn: UIButton!
     @IBOutlet weak var pauseAndResumeRecordBtn: UIButton!
     @IBOutlet weak var recordBg: UIImageView!
-    @IBOutlet weak var timerLbl: UILabel!
+    @IBOutlet weak var minLbl: UILabel!
+    @IBOutlet weak var secLbl: UILabel!
+    @IBOutlet weak var colonLbl: UILabel!
     
     
     // var:
@@ -52,7 +54,9 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         recordBtn.enabled = true
         recordBtn.hidden = false
         recordBg.hidden = true
-        timerLbl.hidden = true
+        minLbl.hidden = true
+        colonLbl.hidden = true
+        secLbl.hidden = true
     }
 
     
@@ -64,7 +68,9 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         recordBtn.enabled = false
         recordBtn.hidden = true
         recordBg.hidden = false
-        timerLbl.hidden = false
+        minLbl.hidden = false
+        colonLbl.hidden = false
+        secLbl.hidden = false
         
         // prepare to record
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
@@ -197,7 +203,8 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         let strMinutes = String(format: "%02d", minutes)
         let strSeconds = String(format: "%02d", seconds)
         
-        timerLbl.text = "\(strMinutes):\(strSeconds)"
+        minLbl.text = "\(strMinutes)"
+        secLbl.text = "\(strSeconds)"
     }
 
 }
