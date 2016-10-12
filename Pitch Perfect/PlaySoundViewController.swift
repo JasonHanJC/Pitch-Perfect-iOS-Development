@@ -24,7 +24,7 @@ class PlaySoundViewController: UIViewController {
         do {
             
             let url = receivedAudio.filePathUrl
-            try audioPlayer = AVAudioPlayer(contentsOfURL: url)
+            try audioPlayer = AVAudioPlayer(contentsOf: url as URL)
             audioPlayer.enableRate = true
             
         } catch let err as NSError {
@@ -33,7 +33,7 @@ class PlaySoundViewController: UIViewController {
         
         audioEngine = AVAudioEngine()
         audioPlayerNode = AVAudioPlayerNode()
-        audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
+        audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl as URL)
         audioPlayer.prepareToPlay()
         
     }
@@ -44,62 +44,62 @@ class PlaySoundViewController: UIViewController {
     }
     
 
-    @IBAction func playSlowSounds(sender: UIButton) {
+    @IBAction func playSlowSounds(_ sender: UIButton) {
         playDifRateSounds(0.5)
     }
     
-    @IBAction func playFastSounds(sender: UIButton) {
+    @IBAction func playFastSounds(_ sender: UIButton) {
         playDifRateSounds(2.0)
     }
     
-    @IBAction func playDeathDarkSound(sender: UIButton) {
+    @IBAction func playDeathDarkSound(_ sender: UIButton) {
         playDifPitchSounds(-1000)
     }
     
-    @IBAction func playChipmunkSound(sender: UIButton) {
+    @IBAction func playChipmunkSound(_ sender: UIButton) {
         playDifPitchSounds(1000)
     }
     
-    @IBAction func playReverbSound(sender: UIButton) {
+    @IBAction func playReverbSound(_ sender: UIButton) {
         resetAudioUnits()
         
         audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attach(audioPlayerNode)
         
         let reverb = AVAudioUnitReverb()
-        reverb.loadFactoryPreset(AVAudioUnitReverbPreset.MediumHall)
+        reverb.loadFactoryPreset(AVAudioUnitReverbPreset.mediumHall)
         reverb.wetDryMix = 50
-        audioEngine.attachNode(reverb)
+        audioEngine.attach(reverb)
         
         audioEngine.connect(audioPlayerNode, to: reverb, format: nil)
         audioEngine.connect(reverb, to: audioEngine.outputNode, format: nil)
         
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
         try! audioEngine.start()
         
         audioPlayerNode.play()
     }
     
-    func playDifPitchSounds(pitch: Float) {
+    func playDifPitchSounds(_ pitch: Float) {
         resetAudioUnits()
 
         audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attach(audioPlayerNode)
         
         let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
-        audioEngine.attachNode(changePitchEffect)
+        audioEngine.attach(changePitchEffect)
         
         audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
         try! audioEngine.start()
         
         audioPlayerNode.play()
     }
     
-    func playDifRateSounds(rate: Float) {
+    func playDifRateSounds(_ rate: Float) {
         resetAudioUnits()
         
         audioPlayer.rate = rate
@@ -107,22 +107,22 @@ class PlaySoundViewController: UIViewController {
     }
     
     func resetAudioUnits() {
-        if audioEngine.running {
+        if audioEngine.isRunning {
             audioEngine.stop()
             audioEngine.reset()
         }
         
-        if audioPlayerNode.playing {
+        if audioPlayerNode.isPlaying {
             audioPlayerNode.stop()
         }
         
-        if audioPlayer.playing {
+        if audioPlayer.isPlaying {
             audioPlayer.stop()
             audioPlayer.currentTime = 0
         }
     }
     
-    @IBAction func stopPlaySounds(sender: UIButton) {
+    @IBAction func stopPlaySounds(_ sender: UIButton) {
         resetAudioUnits()
     }
 

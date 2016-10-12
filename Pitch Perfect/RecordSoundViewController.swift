@@ -24,14 +24,14 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     // var:
     var soundRecorder: AVAudioRecorder!
     var recordedAudio: RecordedAudio!
-    var timer_1: NSTimer!
-    var timer_2: NSTimer!
+    var timer_1: Timer!
+    var timer_2: Timer!
     var blinkStatus: Bool!
     var isPause: Bool!
-    var startTime: NSTimeInterval!
-    var pauseTime: NSTimeInterval!
-    var timeGap_1: NSTimeInterval!
-    var timeGap_2: NSTimeInterval!
+    var startTime: TimeInterval!
+    var pauseTime: TimeInterval!
+    var timeGap_1: TimeInterval!
+    var timeGap_2: TimeInterval!
 
     
     override func viewDidLoad() {
@@ -46,55 +46,55 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     // For showing and hiding things
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
-        stopRecordBtn.hidden = true
-        recordLabel.hidden = false
-        pauseAndResumeRecordBtn.hidden = true
-        recordBtn.enabled = true
-        recordBtn.hidden = false
-        recordBg.hidden = true
-        minLbl.hidden = true
-        colonLbl.hidden = true
-        secLbl.hidden = true
+        stopRecordBtn.isHidden = true
+        recordLabel.isHidden = false
+        pauseAndResumeRecordBtn.isHidden = true
+        recordBtn.isEnabled = true
+        recordBtn.isHidden = false
+        recordBg.isHidden = true
+        minLbl.isHidden = true
+        colonLbl.isHidden = true
+        secLbl.isHidden = true
     }
 
     
-    @IBAction func recordSound(sender: UIButton) {
+    @IBAction func recordSound(_ sender: UIButton) {
         
         recordLabel.text = "Recording in progress"
-        stopRecordBtn.hidden = false
-        pauseAndResumeRecordBtn.hidden = false
-        recordBtn.enabled = false
-        recordBtn.hidden = true
-        recordBg.hidden = false
-        minLbl.hidden = false
-        colonLbl.hidden = false
-        secLbl.hidden = false
+        stopRecordBtn.isHidden = false
+        pauseAndResumeRecordBtn.isHidden = false
+        recordBtn.isEnabled = false
+        recordBtn.isHidden = true
+        recordBg.isHidden = false
+        minLbl.isHidden = false
+        colonLbl.isHidden = false
+        secLbl.isHidden = false
         
         // prepare to record
-        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         
         let nameOfRecordSound = "myRecord"
         let recordingName = nameOfRecordSound + ".wav"
         let pathArray = [dirPath, recordingName]
-        let filePath = NSURL.fileURLWithPathComponents(pathArray)
+        let filePath = NSURL.fileURL(withPathComponents: pathArray)
         print(filePath)
         
         // Setup audio session
         let session = AVAudioSession.sharedInstance()
-        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, withOptions: AVAudioSessionCategoryOptions.DefaultToSpeaker)
+        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
         
         // Initialize and prepare the recorder
-        try! soundRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
+        try! soundRecorder = AVAudioRecorder(url: filePath!, settings: [:])
         soundRecorder.delegate = self
-        soundRecorder.meteringEnabled = true
+        soundRecorder.isMeteringEnabled = true
         soundRecorder.prepareToRecord()
         soundRecorder.record()
         
         startTimer()
         
-        startTime = NSDate.timeIntervalSinceReferenceDate()
+        startTime = Date.timeIntervalSinceReferenceDate
     }
     
     func startTimer() {
@@ -105,8 +105,8 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
             timer_2.invalidate()
         }
         
-        timer_1 = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "recordLblBlink", userInfo: nil, repeats: true)
-        timer_2 = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timerLblUpdate", userInfo: nil, repeats: true)
+        timer_1 = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(RecordSoundViewController.recordLblBlink), userInfo: nil, repeats: true)
+        timer_2 = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(RecordSoundViewController.timerLblUpdate), userInfo: nil, repeats: true)
     }
     
     func stopTimer() {
@@ -114,35 +114,35 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         timer_2.invalidate()
     }
     
-    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
-            recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
+            recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent)
             // Move to the next scene aka perform segue
-            performSegueWithIdentifier("stopRecording", sender: recordedAudio)
+            performSegue(withIdentifier: "stopRecording", sender: recordedAudio)
         } else {
             // Print out the err and enable the btn to record again
             print("Recording was not successful")
-            recordBtn.enabled = true
-            stopRecordBtn.hidden = true
-            pauseAndResumeRecordBtn.hidden = true
+            recordBtn.isEnabled = true
+            stopRecordBtn.isHidden = true
+            pauseAndResumeRecordBtn.isHidden = true
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "stopRecording" {
             // segue.destinationViewController makes that when stopRecording is called the view will changed to the next wanted view
-            let playSoundsVC:PlaySoundViewController = segue.destinationViewController as! PlaySoundViewController
+            let playSoundsVC:PlaySoundViewController = segue.destination as! PlaySoundViewController
             let data = sender as! RecordedAudio
             playSoundsVC.receivedAudio = data
         }
     }
     
-    @IBAction func stopRecording(sender: UIButton) {
+    @IBAction func stopRecording(_ sender: UIButton) {
         
-        recordLabel.hidden = true
+        recordLabel.isHidden = true
         recordLabel.text = "Tap to Record"
         isPause = true
-        pauseAndResumeRecordBtn.setImage(UIImage(named: "pauseImg"), forState: .Normal)
+        pauseAndResumeRecordBtn.setImage(UIImage(named: "pauseImg"), for: UIControlState())
         
         
         // stop the record
@@ -154,21 +154,21 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         stopTimer()
     }
     
-    @IBAction func pauseAndResumeRecording(sender: UIButton) {
+    @IBAction func pauseAndResumeRecording(_ sender: UIButton) {
         
         if isPause == true {
             recordLabel.text = "Recording is Paused"
             soundRecorder.pause()
-            pauseAndResumeRecordBtn.setImage(UIImage(named: "resumeImg"), forState: .Normal)
+            pauseAndResumeRecordBtn.setImage(UIImage(named: "resumeImg"), for: UIControlState())
             isPause = false
-            timeGap_1 = NSDate.timeIntervalSinceReferenceDate()
+            timeGap_1 = Date.timeIntervalSinceReferenceDate
             stopTimer()
         } else {
             recordLabel.text = "Recording in progress"
             soundRecorder.record()
-            pauseAndResumeRecordBtn.setImage(UIImage(named: "pauseImg"), forState: .Normal)
+            pauseAndResumeRecordBtn.setImage(UIImage(named: "pauseImg"), for: UIControlState())
             isPause = true
-            timeGap_2 = NSDate.timeIntervalSinceReferenceDate()
+            timeGap_2 = Date.timeIntervalSinceReferenceDate
             pauseTime = pauseTime + timeGap_2 - timeGap_1
             startTimer()
         }
@@ -191,14 +191,14 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func timerLblUpdate() {
-        let currentTime = NSDate.timeIntervalSinceReferenceDate()
-        var elapsedTime: NSTimeInterval = currentTime - startTime - pauseTime
+        let currentTime = Date.timeIntervalSinceReferenceDate
+        var elapsedTime: TimeInterval = currentTime - startTime - pauseTime
         
         let minutes = UInt8(elapsedTime / 60.0)
-        elapsedTime -= (NSTimeInterval(minutes) * 60)
+        elapsedTime -= (TimeInterval(minutes) * 60)
         
         let seconds = UInt8(elapsedTime)
-        elapsedTime -= NSTimeInterval(seconds)
+        elapsedTime -= TimeInterval(seconds)
         
         let strMinutes = String(format: "%02d", minutes)
         let strSeconds = String(format: "%02d", seconds)
